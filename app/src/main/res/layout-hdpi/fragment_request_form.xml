@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.transporargo.main_fragments.ui.request_form.RequestFormViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/add_request_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/pd_20"
+            tools:context=".main_fragments.ui.request_form.RequestFormFragment">
+
+            <RadioGroup
+                android:id="@+id/requestTypeRadioGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RadioButton
+                    android:id="@+id/truck_radio_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/mr_20"
+                    android:onClick="@{() -> viewModel.setTransportForm()}"
+                    android:text="@string/truck"
+                    tools:text="Blue" />
+
+                <RadioButton
+                    android:id="@+id/cargo_radio_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> viewModel.setCargoForm()}"
+                    android:text="@string/cargo"
+                    tools:text="Green" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/evaluate_date_input"
+                style="@style/add_request_input_one_line"
+                android:layout_width="match_parent"
+                android:ems="10"
+                android:hint="@string/evaluate_date"
+                android:inputType="date"
+                android:text="@={viewModel.evaluateDate}"
+                app:layout_constraintTop_toBottomOf="@+id/requestTypeRadioGroup"
+                tools:layout_editor_absoluteX="20dp" />
+
+            <EditText
+                android:id="@+id/weight_input"
+                style="@style/add_request_input_one_line"
+                android:layout_width="match_parent"
+                android:ems="10"
+                android:hint="@string/weight"
+                android:inputType="numberDecimal|number"
+                android:text="@={viewModel.weight}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/evaluate_date_input" />
+
+            <EditText
+                android:id="@+id/capacity_input"
+                style="@style/add_request_input_one_line"
+                android:layout_width="match_parent"
+                android:ems="10"
+                android:hint="@string/capacity"
+                android:inputType="numberDecimal|number"
+                android:text="@={viewModel.capacity}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/weight_input" />
+
+            <EditText
+                android:id="@+id/truck_type_input"
+                style="@style/add_request_input_one_line"
+                android:ems="10"
+                android:hint="@string/truck_type"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:text="@={viewModel.truckType}"
+                app:layout_constraintBottom_toBottomOf="@+id/cargo_type_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/capacity_input" />
+
+            <EditText
+                android:id="@+id/cargo_type_input"
+                style="@style/add_request_input_one_line"
+                android:layout_width="match_parent"
+                android:ems="10"
+                android:hint="@string/cargo"
+                android:inputType="text"
+                android:text="@={viewModel.cargoType}"
+                app:layout_constraintBottom_toTopOf="@+id/phone_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/capacity_input" />
+
+            <EditText
+                android:id="@+id/phone_input"
+                style="@style/add_request_input_one_line"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="@dimen/mr_20"
+                android:ems="10"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                android:text="@={viewModel.phone}"
+                app:layout_constraintBottom_toTopOf="@+id/place_from"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/add_request_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save_request"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/place_from"
+                style="@style/add_request_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/mr_10"
+
+                android:ems="10"
+                android:hint="@string/place_from"
+                android:inputType="text"
+                app:layout_constraintBottom_toTopOf="@+id/arrow_forwarder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/place_to"
+                style="@style/add_request_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/place_to"
+                android:inputType="text"
+                app:layout_constraintBottom_toTopOf="@+id/add_request_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/arrow_forwarder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/mr_10"
+                app:layout_constraintBottom_toTopOf="@+id/place_to"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/arrow_for_mini_phone" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:gravity="center"
+                android:indeterminateTint="@color/color_on_primary"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

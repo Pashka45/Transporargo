@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_name_font_size">40sp</dimen>
+    <dimen name="padding_start">50dp</dimen>
+    <dimen name="padding_end">50dp</dimen>
+    <dimen name="input_margin_top">30dp</dimen>
+    <dimen name="little_margin">10dp</dimen>
+    <dimen name="mr_50">50dp</dimen>
+    <dimen name="mr_20">20dp</dimen>
+    <dimen name="mr_25">25dp</dimen>
+    <dimen name="pd_20">20dp</dimen>
+    <dimen name="pd_10">10dp</dimen>
+    <dimen name="mr_10">10dp</dimen>
+    <dimen name="mr_5">5dp</dimen>
+    <dimen name="medium_padding">16dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+</resources>

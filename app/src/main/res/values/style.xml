@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="add_request_input">
+        <item name="android:layout_height">64dp</item>
+        <item name="android:layout_width">162dp</item>
+
+    </style>
+
+    <style name="add_request_input_one_line" parent="add_request_input">
+        <item name="android:maxLines">1</item>
+        <item name="android:minLines">1</item>
+        <item name="android:lines">1</item>
+    </style>
+</resources>

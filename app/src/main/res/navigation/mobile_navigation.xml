@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/myRequestsFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.transporargo.main_fragments.ui.search.search_form.SearchFormFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search_form" >
+        <action
+            android:id="@+id/action_searchFragment_to_requestListFragment"
+            app:destination="@id/requestListFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_searchFormSelectPlaceFragment"
+            app:destination="@id/searchFormSelectPlaceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myRequestsFragment"
+        android:name="com.example.transporargo.main_fragments.ui.myrequests.MyRequestsFragment"
+        android:label="fragment_my_requests"
+        tools:layout="@layout/fragment_my_requests">
+        <action
+            android:id="@+id/action_myRequestsFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_myRequestsFragment_to_addRequestFragment"
+            app:destination="@id/addRequestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.example.transporargo.main_fragments.ui.map.RequestPlacesFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <argument
+            android:name="fromPlaceLatLngStr"
+            app:argType="string" />
+        <argument android:name="toPlaceLatLngStr"
+            app:argType="string" />
+        <argument
+            android:name="fromPlaceName"
+            app:argType="string" />
+        <argument
+            android:name="toPlaceName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/addRequestFragment"
+        android:name="com.example.transporargo.main_fragments.ui.request_form.RequestFormFragment"
+        android:label="AddRequestFragment"
+        tools:layout="@layout/fragment_request_form">
+        <action
+            android:id="@+id/action_addRequestFragment_to_selectPlaceFragment"
+            app:destination="@id/requestFormSelectPlaceFragment" />
+        <action
+            android:id="@+id/action_addRequestFragment_to_myRequestsFragment"
+            app:destination="@id/myRequestsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestFormSelectPlaceFragment"
+        android:name="com.example.transporargo.main_fragments.ui.map.RequestFormSelectPlaceFragment"
+        android:label="fragment_request_form_select_place"
+        tools:layout="@layout/fragment_request_form_select_place">
+        <argument
+            android:name="clientLatLng"
+            app:argType="string" />
+        <argument
+            android:name="isPlaceFrom"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_selectPlaceFragment_to_addRequestFragment"
+            app:destination="@id/addRequestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestListFragment"
+        android:name="com.example.transporargo.main_fragments.ui.search.request_list.RequestListFragment"
+        android:label="RequestListFragment"
+        tools:layout="@layout/fragment_request_list" >
+        <action
+            android:id="@+id/action_requestListFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFormSelectPlaceFragment"
+        android:name="com.example.transporargo.main_fragments.ui.map.SearchFormSelectPlaceFragment"
+        android:label="SearchFormSelectPlaceFragment"
+        tools:layout="@layout/fragment_search_form_select_place">
+        <action
+            android:id="@+id/action_searchFormSelectPlaceFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <argument
+            android:name="clientLatLng"
+            app:argType="string" />
+        <argument
+            android:name="isPlaceFrom"
+            app:argType="boolean" />
+    </fragment>
+</navigation>

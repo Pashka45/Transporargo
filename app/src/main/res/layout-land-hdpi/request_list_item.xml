@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="request"
+            type="com.example.transporargo.main_fragments.ui.myrequests.recyclerview.RequestListAdapter.RequestListItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/request_container"
+        border="@{request.requestBorder}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mr_20"
+        android:padding="@dimen/pd_10">
+
+        <ImageView
+            android:id="@+id/calendar_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/outline_calendar_today_24" />
+
+        <ImageView
+            android:id="@+id/phone_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/outline_call_24" />
+
+        <ImageView
+            android:id="@+id/request_type_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mr_5"
+            android:src="@{request.requestImg}"
+            android:layout_marginStart="@dimen/mr_20"
+            app:layout_constraintStart_toEndOf="@+id/cube"
+            app:layout_constraintTop_toBottomOf="@+id/calendar_img"
+            tools:src="@drawable/outline_inventory_2_24" />
+
+        <ImageView
+            android:id="@+id/weight_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mr_20"
+            app:layout_constraintStart_toEndOf="@+id/evaluates_dates"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/outline_fitness_center_24" />
+
+        <ImageView
+            android:id="@+id/cube_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/request_path"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendar_img"
+            app:srcCompat="@drawable/outline_open_with_24" />
+
+        <TextView
+            android:id="@+id/evaluates_dates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="@dimen/mr_10"
+            android:text="@{request.evaluatesDates}"
+            app:layout_constraintBottom_toTopOf="@+id/request_path"
+            app:layout_constraintStart_toEndOf="@+id/calendar_img"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="asdasd" />
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mr_10"
+            android:layout_marginBottom="@dimen/mr_10"
+            android:text="@{request.weight}"
+            app:layout_constraintStart_toEndOf="@+id/weight_img"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="asdasd" />
+
+        <TextView
+            android:id="@+id/cube"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{request.cube}"
+            app:layout_constraintStart_toEndOf="@+id/cube_img"
+            app:layout_constraintTop_toBottomOf="@+id/evaluates_dates"
+            tools:text="asdasd" />
+
+        <TextView
+            android:id="@+id/truckOrCargoName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mr_10"
+            android:text="@{request.truckOrCargoName}"
+            app:layout_constraintBottom_toTopOf="@+id/request_path"
+            app:layout_constraintStart_toEndOf="@+id/request_type_img"
+            app:layout_constraintTop_toBottomOf="@+id/evaluates_dates"
+            tools:text="asdasd" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mr_10"
+            android:layout_marginTop="@dimen/mr_10"
+            android:onClick="@{() -> request.listener.callToPhone(request.phone)}"
+            android:text="@{request.phone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/phone_img"
+            app:layout_constraintTop_toBottomOf="@+id/request_path"
+            tools:text="asdasd" />
+
+        <TextView
+            android:id="@+id/request_path"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="@{() -> request.listener.showPlaces(request.fromPlaceLatLng, request.placeFromName, request.toPlaceLatLng, request.placeToName)}"
+            android:text="@{request.requestPath}"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/phone_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/request_type_img"
+            tools:text="asdasd" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
