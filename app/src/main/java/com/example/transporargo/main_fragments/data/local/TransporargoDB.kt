@@ -29,6 +29,7 @@ fun getDatabase(context: Context): TransargoDatabase {
         if (!::INSTANCE.isInitialized) {
             INSTANCE = Room
                 .databaseBuilder(context.applicationContext, TransargoDatabase::class.java, TransargoDatabase.dbname)
+                .fallbackToDestructiveMigration()
                 .build()
         }
     }

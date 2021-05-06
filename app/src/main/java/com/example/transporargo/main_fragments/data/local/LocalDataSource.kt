@@ -39,7 +39,6 @@ class LocalDataSource(private val db: TransargoDatabase) : DataSource {
             val myRequests = requests.asDatabaseModel()
             db.myRequestsDao.addRequests(myRequests)
             val requestsFromDb = db.myRequestsDao.getRequests().asModel()
-            Log.i("requestsFromDb", requestsFromDb.toString())
             callback(requestsFromDb)
         }
     }

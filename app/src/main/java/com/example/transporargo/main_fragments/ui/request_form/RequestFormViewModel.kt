@@ -79,6 +79,7 @@ class RequestFormViewModel(private val context: Application) : BaseFormViewModel
         placeToName.postValue(null)
         placeFromLatLng.postValue(null)
         phone.postValue(null)
+        _requestId.postValue("")
         manipulationType = RequestManipulations.ADD
     }
 
@@ -86,6 +87,7 @@ class RequestFormViewModel(private val context: Application) : BaseFormViewModel
         when (manipulationType) {
             RequestManipulations.ADD -> {
                 addRequest()
+                clear()
             }
             RequestManipulations.EDIT -> {
                 editRequest()
@@ -166,7 +168,7 @@ class RequestFormViewModel(private val context: Application) : BaseFormViewModel
 
     private fun createNewRequestInstance(): Request {
         return Request(
-            _requestId.value.toString(),
+            generateId(),
             Authentication.id,
             capacity.value!!.toFloat(),
             weight.value!!.toFloat(),
