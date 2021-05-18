@@ -110,8 +110,10 @@ class RequestHandler(
     }
 
     private fun editRequest(params: Map<String, String>) {
+        var found: RequestServerDTO
         requestList.forEachIndexed { index, request ->
-            request.takeIf { it.id == params["id"] }?.let {
+            Log.i("found_by_id", request.id + " == " + params["id"])
+            if (request.id == params["id"]) {
                 requestList[index] = RequestServerDTO(
                     params["ownerId"]!!,
                     params["cube"]!!.toFloat(),
@@ -127,6 +129,9 @@ class RequestHandler(
                     params["phone"]!!,
                     params["id"]!!
                 )
+                found = requestList[index]
+                Log.i("found_request", found.toString())
+                return@forEachIndexed
             }
         }
     }

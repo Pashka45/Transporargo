@@ -129,6 +129,7 @@ class RequestFormViewModel(private val context: Application) : BaseFormViewModel
 
 
     fun fillRequestFields(request: Request, needNewId: Boolean = false) {
+        Log.i("needNewId", needNewId.toString())
         _requestId.value = if (needNewId) {
             generateId()
         } else {
@@ -168,7 +169,7 @@ class RequestFormViewModel(private val context: Application) : BaseFormViewModel
 
     private fun createNewRequestInstance(): Request {
         return Request(
-            generateId(),
+            _requestId.value!!,
             Authentication.id,
             capacity.value!!.toFloat(),
             weight.value!!.toFloat(),
